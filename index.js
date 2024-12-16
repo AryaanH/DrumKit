@@ -13,9 +13,11 @@ function playAudio() {
 }
 
 // keyboard press sound play
-document.addEventListener("keydown", function (event) {
+document.addEventListener("keydown", getKeyboardEvent);
+
+function getKeyboardEvent(event) {
     makeSound(event.key);
-});
+}
 
 function makeSound(key) {
     switch (key) {
