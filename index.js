@@ -10,6 +10,7 @@ for (var i = 0; i < butt.length; i++) {
 function playAudio() {
     var buttonInnerHtml = this.innerHTML;
     makeSound(buttonInnerHtml);
+    buttonPress(buttonInnerHtml);
 }
 
 // keyboard press sound play
@@ -17,6 +18,7 @@ document.addEventListener("keydown", getKeyboardEvent);
 
 function getKeyboardEvent(event) {
     makeSound(event.key);
+    buttonPress(event.key);
 }
 
 function makeSound(key) {
@@ -60,4 +62,13 @@ function makeSound(key) {
             console.log(this.key);
             break;
     }
+}
+
+function buttonPress(currentButton) {
+
+    var activeButton = document.querySelector("." + currentButton);
+    activeButton.classList.add("pressed");
+    setTimeout(function () {
+        activeButton.classList.remove("pressed")
+    }, 100);
 }
