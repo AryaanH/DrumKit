@@ -1,4 +1,5 @@
 
+// mouse click sound play
 var butt = document.querySelectorAll(".drum");
 
 for (var i = 0; i < butt.length; i++) {
@@ -6,11 +7,18 @@ for (var i = 0; i < butt.length; i++) {
 
 }
 
-
-
 function playAudio() {
     var buttonInnerHtml = this.innerHTML;
-    switch (buttonInnerHtml) {
+    makeSound(buttonInnerHtml);
+}
+
+// keyboard press sound play
+document.addEventListener("keydown", function (event) {
+    makeSound(event.key);
+});
+
+function makeSound(key) {
+    switch (key) {
         case "w":
             var tom1 = new Audio('./sounds/tom-1.mp3');
             tom1.play();
@@ -47,11 +55,7 @@ function playAudio() {
             break;
 
         default:
-            console.log(this.innerHTML);
+            console.log(this.key);
             break;
     }
 }
-
-document.addEventListener("keydown", function () {
-    alert("Key was pressed");
-})
